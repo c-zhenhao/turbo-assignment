@@ -1,19 +1,21 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
 
-interface FooterProps {
+import { PageContentItem } from '../constants/PageContent';
+
+interface OnboardingFooterProps {
   currentPage: number;
   totalPages: number;
-  footerButtonText: string;
+  pageContent: PageContentItem[];
   onNext: () => void;
 }
 
 export function OnboardingFooter({
   currentPage,
   totalPages,
-  footerButtonText,
+  pageContent,
   onNext,
-}: FooterProps) {
+}: OnboardingFooterProps) {
   return (
     <View className="w-full border-t border-white/10 bg-[#130739] p-4">
       <View className="flex-row items-center justify-between">
@@ -29,12 +31,10 @@ export function OnboardingFooter({
           })}
         </View>
 
-        {/* next page button */}
-        <TouchableOpacity onPress={onNext} className="rounded-full bg-[#802EFF] px-8 py-4">
-          <Text className="font-semibold text-white">
-            {footerButtonText} {'>'}
-          </Text>
-        </TouchableOpacity>
+        {/* custom button or default button */}
+        {pageContent[currentPage].renderButton
+          ? pageContent[currentPage].renderButton(onNext)
+          : null}
       </View>
     </View>
   );

@@ -57,6 +57,9 @@ importers:
 
   apps/native:
     dependencies:
+      '@expo/vector-icons':
+        specifier: ^14.0.4
+        version: 14.0.4
       '@repo/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -210,11 +213,11 @@ importers:
         specifier: ^22.13.0
         version: 22.13.0
       '@types/react':
-        specifier: 19.0.8
-        version: 19.0.8
+        specifier: ^18.2.0
+        version: 18.3.18
       '@types/react-dom':
         specifier: 19.0.3
-        version: 19.0.3(@types/react@19.0.8)
+        version: 19.0.3(@types/react@18.3.18)
       eslint:
         specifier: ^9.21.0
         version: 9.21.0(jiti@1.21.7)
@@ -7267,6 +7270,10 @@ snapshots:
       undici-types: 6.20.0
 
   '@types/prop-types@15.7.14': {}
+
+  '@types/react-dom@19.0.3(@types/react@18.3.18)':
+    dependencies:
+      '@types/react': 18.3.18
 
   '@types/react-dom@19.0.3(@types/react@19.0.8)':
     dependencies:

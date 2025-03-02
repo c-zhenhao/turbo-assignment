@@ -7,21 +7,16 @@ import { OnboardingFooter } from './OnboardingFooter';
 import { OnboardingStepIndicator } from './OnboardingStepIndicator';
 import { cards } from '../constants/CardContent';
 import { categories } from '../constants/CategoryContent';
+import { pageContent } from '../constants/PageContent';
 import { CardItem } from '../types/CardTypes';
 
 export default function OnboardingScreen() {
-  const pageContent = [
-    { ctaText: 'See how it works' },
-    { ctaText: '' },
-    { ctaText: 'Get Started' },
-  ];
   const [page, setPage] = useState<number>(0);
   const totalPages = pageContent.length;
-  const [footerButtonText, setFooterButtonText] = useState<string>(pageContent[0].ctaText);
+
   const handleNextPage = () => {
     const nextPage = page === totalPages - 1 ? 0 : page + 1;
     setPage(nextPage);
-    setFooterButtonText(pageContent[nextPage].ctaText);
   };
 
   // map so we can add more properties later
@@ -139,7 +134,7 @@ export default function OnboardingScreen() {
       <OnboardingFooter
         currentPage={page}
         totalPages={totalPages}
-        footerButtonText={footerButtonText}
+        pageContent={pageContent}
         onNext={handleNextPage}
       />
     </SafeAreaView>
