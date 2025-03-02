@@ -24,7 +24,7 @@ export function OnboardingFooter({ currentPage, totalPages, onNext }: FooterProp
         </View>
 
         {/* next page button */}
-        <TouchableOpacity onPress={onNext} className="rounded-full bg-purple-600 px-8 py-4">
+        <TouchableOpacity onPress={onNext} className="rounded-full bg-[#802EFF] px-8 py-4">
           <Text className="font-semibold text-white">See how it works {'>'}</Text>
         </TouchableOpacity>
       </View>

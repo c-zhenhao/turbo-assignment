@@ -54,10 +54,10 @@ export default function OnboardingScreen() {
       {page !== 0 && (
         <View
           className={`items-center bg-[#130739] p-6 py-4 ${page % 2 !== 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-          <View className="h-8 w-8 items-center justify-center rounded-full bg-purple-600">
+          <View className="h-8 w-8 items-center justify-center rounded-full bg-[#802EFF]">
             <Text className="font-bold text-white">{page}</Text>
           </View>
-          <View className="h-0.5 w-full bg-purple-600" />
+          <View className="h-0.5 w-full bg-[#802EFF]" />
         </View>
       )}
 
@@ -70,7 +70,7 @@ export default function OnboardingScreen() {
             <Text className="text-4xl font-bold text-white">
               HEY
               {/* add linear gradient later */}
-              <Text className="text-4xl font-bold text-purple-600">MAX</Text>
+              <Text className="text-4xl font-bold text-[#802EFF]">MAX</Text>
             </Text>
 
             {/* this image is actually a mp4, change later, need to install some dependencies for video to play */}
@@ -82,7 +82,7 @@ export default function OnboardingScreen() {
 
             {/* subheader */}
             <Text className="mt-10 text-center text-4xl font-bold text-white">
-              Shop your way to a<Text className="text-purple-600"> Dream Vacation</Text>
+              Shop your way to a<Text className="text-[#802EFF]"> Dream Vacation</Text>
             </Text>
 
             {/* subbody */}
@@ -110,7 +110,7 @@ export default function OnboardingScreen() {
                   key={index}
                   onPress={() => setSelectedIndex(index)}
                   // If this pill is selected, use opacity-100; otherwise, set opacity-0 (fully dimmed)
-                  className={`mr-3 rounded-full bg-purple-600 px-4 py-2 ${selectedIndex === index ? 'opacity-100' : 'opacity-40'}`}>
+                  className={`mr-3 rounded-full bg-[#802EFF] px-4 py-2 ${selectedIndex === index ? 'opacity-100' : 'opacity-40'}`}>
                   <Text className="text-white">{category.name}</Text>
                 </TouchableOpacity>
               ))}
