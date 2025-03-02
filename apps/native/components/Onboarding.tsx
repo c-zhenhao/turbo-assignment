@@ -4,62 +4,32 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { Card } from './Card';
 import { OnboardingFooter } from './OnboardingFooter';
+import { OnboardingStepIndicator } from './OnboardingStepIndicator';
+import { cards } from '../constants/CardContent';
+import { categories } from '../constants/CategoryContent';
+import { CardItem } from '../types/CardTypes';
 
 export default function OnboardingScreen() {
+  const pageContent = [
+    { ctaText: 'See how it works' },
+    { ctaText: '' },
+    { ctaText: 'Get Started' },
+  ];
   const [page, setPage] = useState<number>(0);
-  const totalPages = 3; // make it dynamic later
-
+  const totalPages = pageContent.length;
+  const [footerButtonText, setFooterButtonText] = useState<string>(pageContent[0].ctaText);
   const handleNextPage = () => {
-    setPage((prev) => prev + (1 % totalPages));
-    // temporarily loop back
-    if (page === totalPages - 1) {
-      setPage(0);
-    }
+    const nextPage = page === totalPages - 1 ? 0 : page + 1;
+    setPage(nextPage);
+    setFooterButtonText(pageContent[nextPage].ctaText);
   };
 
   // map so we can add more properties later
-  const categories = [
-    { name: 'Shop online' },
-    { name: 'Book travel' },
-    { name: 'Order food' },
-    { name: 'See all' },
-  ];
   const [selectedIndex, setSelectedIndex] = useState<number>(categories.length - 1); // default to the last one as the "show all category"
-
-  // cards content
-  const cards = [
-    {
-      title: 'Transfer miles',
-      image: require('../assets/transfer_miles.png'),
-      body: '25 Airline and Hotel Partners, No Fees, 1:1 Transfer Ratio',
-      subtitle: 'Best for Business & First Class',
-    },
-    {
-      title: 'Fly and Claim',
-      image: require('../assets/fly_and_claim.png'),
-      body: 'Upload your flight ticket, and get reimbursed within 5 days',
-      subtitle: 'Best for Economy',
-    },
-    {
-      title: 'Not flying soon',
-      image: require('../assets/not_flying_soon.png'),
-      body: 'You can always redeem Gift Cards with your Max Miles',
-      subtitle: 'Best for Starters',
-    },
-  ];
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: '#130739' }}>
-      {/* step indicator, hide when 0 */}
-      {page !== 0 && (
-        <View
-          className={`items-center bg-[#130739] p-6 py-4 ${page % 2 !== 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-          <View className="h-8 w-8 items-center justify-center rounded-full bg-[#802EFF]">
-            <Text className="font-bold text-white">{page}</Text>
-          </View>
-          <View className="h-0.5 w-full bg-[#802EFF]" />
-        </View>
-      )}
+      <OnboardingStepIndicator currentPage={page} alignRight={page % 2 === 0} />
 
       {/* content container */}
       <View className="align-center flex-1 bg-[#130739] p-2">
@@ -76,7 +46,7 @@ export default function OnboardingScreen() {
             {/* this image is actually a mp4, change later, need to install some dependencies for video to play */}
             <Image
               source={require('../assets/map.png')}
-              className="mt-10 h-48 w-80 "
+              className="m-10 h-48 w-full"
               resizeMode="cover"
             />
 
@@ -105,15 +75,16 @@ export default function OnboardingScreen() {
               horizontal
               showsHorizontalScrollIndicator={false}
               className="mt-4 flex-row pb-2">
-              {categories.map((category, index) => (
-                <TouchableOpacity
-                  key={index}
-                  onPress={() => setSelectedIndex(index)}
-                  // If this pill is selected, use opacity-100; otherwise, set opacity-0 (fully dimmed)
-                  className={`mr-3 rounded-full bg-[#802EFF] px-4 py-2 ${selectedIndex === index ? 'opacity-100' : 'opacity-40'}`}>
-                  <Text className="text-white">{category.name}</Text>
-                </TouchableOpacity>
-              ))}
+              {categories && categories.length > 0
+                ? categories.map((category, index) => (
+                    <TouchableOpacity
+                      key={index}
+                      onPress={() => setSelectedIndex(index)}
+                      className={`mr-3 rounded-full bg-[#802EFF] px-4 py-2 ${selectedIndex === index ? 'opacity-100' : 'opacity-40'}`}>
+                      <Text className="text-white">{category.name}</Text>
+                    </TouchableOpacity>
+                  ))
+                : null}
             </ScrollView>
 
             {/* brand image collage */}
@@ -157,15 +128,20 @@ export default function OnboardingScreen() {
 
             {/* cards */}
             <View>
-              {cards.map((card, index) => (
-                <Card key={index} {...card} />
-              ))}
+              {cards && cards.length > 0
+                ? cards.map((card: CardItem, index: number) => <Card key={index} {...card} />)
+                : null}
             </View>
-            <View />
           </View>
         )}
       </View>
-      <OnboardingFooter currentPage={page} totalPages={totalPages} onNext={handleNextPage} />
+
+      <OnboardingFooter
+        currentPage={page}
+        totalPages={totalPages}
+        footerButtonText={footerButtonText}
+        onNext={handleNextPage}
+      />
     </SafeAreaView>
   );
 }

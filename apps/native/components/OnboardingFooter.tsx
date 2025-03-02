@@ -4,10 +4,16 @@ import { View, Text, TouchableOpacity } from 'react-native';
 interface FooterProps {
   currentPage: number;
   totalPages: number;
+  footerButtonText: string;
   onNext: () => void;
 }
 
-export function OnboardingFooter({ currentPage, totalPages, onNext }: FooterProps) {
+export function OnboardingFooter({
+  currentPage,
+  totalPages,
+  footerButtonText,
+  onNext,
+}: FooterProps) {
   return (
     <View className="w-full border-t border-white/10 bg-[#130739] p-4">
       <View className="flex-row items-center justify-between">
@@ -25,7 +31,9 @@ export function OnboardingFooter({ currentPage, totalPages, onNext }: FooterProp
 
         {/* next page button */}
         <TouchableOpacity onPress={onNext} className="rounded-full bg-[#802EFF] px-8 py-4">
-          <Text className="font-semibold text-white">See how it works {'>'}</Text>
+          <Text className="font-semibold text-white">
+            {footerButtonText} {'>'}
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
