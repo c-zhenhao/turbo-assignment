@@ -1,3 +1,4 @@
+import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -13,9 +14,16 @@ export default function OnboardingScreen() {
   const [page, setPage] = useState<number>(0);
   const totalPages = pageContent.length;
 
+  const router = useRouter();
+
   const handleNextPage = () => {
     const nextPage = page === totalPages - 1 ? 0 : page + 1;
     setPage(nextPage);
+
+    // if last page then navigate to the webview
+    if (nextPage === 0) {
+      router.push('webview');
+    }
   };
 
   // map so we can add more properties later

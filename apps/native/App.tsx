@@ -1,12 +1,12 @@
-import OnboardingScreen from 'components/Onboarding';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+// import OnboardingScreen from 'components/Onboarding';
+// import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import './global.css';
+// import './global.css';
 
-export default function App() {
-  return (
-    <SafeAreaProvider>
-      <OnboardingScreen />
-    </SafeAreaProvider>
-  );
-}
+// export default function App() {
+//   return (
+//     <SafeAreaProvider>
+//       <OnboardingScreen />
+//     </SafeAreaProvider>
+//   );
+// }
