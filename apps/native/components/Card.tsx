@@ -1,9 +1,16 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image } from 'react-native';
 
 interface CardProps {
   image?: any; // or ImageSourcePropType
   title: string;
+  body: string;
+  subtitle: string;
+}
+
+export interface CardType {
+  title: string;
+  image: any; // Using 'any' for the image require statement
   body: string;
   subtitle: string;
 }

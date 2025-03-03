@@ -1,6 +1,6 @@
-import { CardItem } from '../types/CardTypes';
+import { CardType } from '../components/Card';
 
-const cards: CardItem[] = [
+const cards: CardType[] = [
   {
     title: 'Transfer miles',
     image: require('../assets/transfer_miles.png'),
@@ -21,4 +21,4 @@ const cards: CardItem[] = [
   },
 ];
 
-export { cards };
+export { cards, CardType };

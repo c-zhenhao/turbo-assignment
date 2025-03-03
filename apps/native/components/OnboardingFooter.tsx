@@ -19,8 +19,7 @@ export function OnboardingFooter({
   return (
     <View className="w-full border-t border-white/10 bg-[#130739] p-4">
       <View className="flex-row items-center justify-between">
-        {/* pagination dots */}
-        {/* could use renimated to slide the dots later */}
+        {/* pagination dots, could use renimated to slide the dots later */}
         <View className="flex-row">
           {Array.from({ length: totalPages }).map((_, index) => {
             const isActive = index === currentPage;

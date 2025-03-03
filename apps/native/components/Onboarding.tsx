@@ -5,10 +5,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Card } from './Card';
 import { OnboardingFooter } from './OnboardingFooter';
 import { OnboardingStepIndicator } from './OnboardingStepIndicator';
-import { cards } from '../constants/CardContent';
+import { cards, CardType } from '../constants/CardContent';
 import { categories } from '../constants/CategoryContent';
 import { pageContent } from '../constants/PageContent';
-import { CardItem } from '../types/CardTypes';
 
 export default function OnboardingScreen() {
   const [page, setPage] = useState<number>(0);
@@ -124,7 +123,7 @@ export default function OnboardingScreen() {
             {/* cards */}
             <View>
               {cards && cards.length > 0
-                ? cards.map((card: CardItem, index: number) => <Card key={index} {...card} />)
+                ? cards.map((card: CardType, index: number) => <Card key={index} {...card} />)
                 : null}
             </View>
           </View>
