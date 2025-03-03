@@ -13,8 +13,8 @@ https://github.com/user-attachments/assets/9b2b3d8c-361f-42d7-9338-5d921c6d58e0
 
 ## Things that are planned to be implemented
 - a custom LinearGradient on the header text
--- implementation would be `react-native-masked-view` & `expo-gradient`
+    - implementation would be `react-native-masked-view` & `expo-gradient`
 - `expo-video` to play the map video
 - `react-native-stagger-view` to implement the merchant images
--- creating a custom grid is possible but it would have to be rescaled everytime and didn't seem feasible
+    - creating a custom grid is possible but it would have to be rescaled everytime and didn't seem feasible
   <img width="1288" alt="image" src="https://github.com/user-attachments/assets/1f8dca9c-c312-4c8a-8391-17b2c9b8bf1e" />
