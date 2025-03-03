@@ -1,7 +1,7 @@
 # Turborepo demo
 This app was created with turborepo [https://turbo.build/repo/docs/getting-started/installation], pnpm is the chosen package manager, so please have it installed in order to run this repo.
 
-To get this working, `git clone {this repo}`
+To get this working, `git clone https://github.com/c-zhenhao/turbo-assignment.git`
 
 `pnpm i` to install the necessary dependencies
 
